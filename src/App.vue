@@ -88,11 +88,26 @@
             </din-radio-group>
             <h3>勾選框 checkbox</h3>
             <div class="row row7">
-               
-                <din-checkbox></din-checkbox> 
-               
+                <din-checkbox v-model="checkboxActive">吃晚餐</din-checkbox>
+                <div>=========================</div>
+                <din-checkbox-group v-model="hobby">
+                    <din-checkbox label="回家"></din-checkbox> 
+                    <din-checkbox label="睡覺"></din-checkbox> 
+                    <din-checkbox label="燙頭"></din-checkbox> 
+                </din-checkbox-group>
             </div>
-           
+            <h6>整體表單</h6>
+            <din-form :model="model" labelWidth="80px">
+                <din-form-item label="用戶名">
+                    <din-input placeholder="請輸入用戶名" v-model="model.userName"></din-input>
+                </din-form-item>
+                 <din-form-item label="選擇">
+                    <din-switch v-model="model.active"></din-switch>
+                </din-form-item>
+                 <din-form-item label="用戶名">
+                    <din-input placeholder="請輸入用戶名"></din-input>
+                </din-form-item>
+            </din-form> 
         </div>
         <div class="right">
             <h3>Dialog</h3>
@@ -121,7 +136,13 @@ export default {
             username:"jessica",
             myPassword:'',
             active:false,
-            gender:1
+            gender:1,
+            checkboxActive:false,
+            hobby:["回家"],
+            model:{
+                userName:'',
+                active:true
+            }
         }
     },
     methods:{
@@ -183,6 +204,13 @@ p{
 }
 .din-switch{
       margin-right:15px;
+}
+.row7{
+    flex-direction: column;
+      color: #dbdbdb;
+}
+.din-checkbox-group{
+     color: #dbdbdb;
 }
 
 </style>
